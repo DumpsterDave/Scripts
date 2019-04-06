@@ -32,7 +32,7 @@
 		
 		public function Set_Primary_Key($val) {
             //Verify the Primary Key is a base64 encoded string
-			if (preg_match("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$", $val)) {
+			if (preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $val)) {
 				$this->PrimaryKey = $val;
 				return true;
 			} else {
