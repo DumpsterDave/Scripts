@@ -114,8 +114,15 @@
 			curl_setopt($Handle, CURLOPT_RETURNTRANSFER, true) or die("Failed to set cURL Return Transfer");
 			
 			#Execute cURL and return the result
-			$Result = curl_exec($Handle);
-			return curl_getinfo($Handle, CURLINFO_HTTP_CODE);
+            $Result = curl_exec($Handle);
+            $CurlInfo = curl_getinfo($Handle, CURLINFO_HTTP_CODE);
+            $fh = fopen('./log', 'a+');
+            fwrite($fh, $Payload . "\n");
+            fwrite($fh, $Result . "\n");
+            fwrite($fh, $CurlInfo . "\n");
+            fclose($fh);
+            
+            return $CurlInfo;
 		}		
 	}
 ?>
